@@ -18,27 +18,6 @@ public class ProductsDAOImpl extends GenericDAO implements ProductsDAO {
     }
 
 
-/*
-    public int insert(Product product) {
-        boolean result = false;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(product);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            LOG.error("Problem with insert" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return result ? 1 : 0;
-    }
-*/
-
-
-
     public Product getByID(long key) {
         Product product = null;
         try {
@@ -56,53 +35,6 @@ public class ProductsDAOImpl extends GenericDAO implements ProductsDAO {
         return product;
     }
 
-/*
-    public void update(Product product) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(product);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            LOG.error("Problem with update" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-*/
-
-    /*@Override
-    public int insert(Identity entity) {
-        return super.insert(entity);
-    }
-
-    @Override
-    public void update(Identity entity) {
-        super.update(entity);
-    }
-
-    @Override
-    public void delete(Identity entity) {
-        super.delete(entity);
-    }*/
-/*
-    public void delete(Product product) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(product);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            LOG.error("Problem with delete" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-*/
 
     public List<Product> getAll() {
         List<Product> productList = new ArrayList<Product>();

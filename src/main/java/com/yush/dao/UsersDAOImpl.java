@@ -17,27 +17,6 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
     public UsersDAOImpl() {
     }
 
-
-/*
-    public int insert(User user) {
-        boolean result = false;
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            log.error("Problem with insert" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return result ? 1 : 0;
-    }
-*/
-
     public User getByID(long key) {
         User user = null;
         Session session = null;
@@ -54,41 +33,6 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
         return user;
     }
 
-/*
-    public void update(User user) {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(user);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            log.error("Problem with update" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-*/
-
-/*
-    public void delete(User user) {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(user);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            log.error("Problem with delete" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-*/
 
     public List<User> getAll() {
         List<User> userList = new ArrayList<User>();
