@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>eshop</display-name>
+    <description>
+        This is a simple web application with a source code organization
+        based on the recommendations of the Application Developer's Guide.
+    </description>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>Main</servlet-name>
+        <servlet-class>com.yush.product.ProductMain</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AuthCheck</servlet-name>
+        <servlet-class>com.yush.users.AuthCheck</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AuthCheck</servlet-name>
+        <url-pattern>/authcheck</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegCheck</servlet-name>
+        <servlet-class>com.yush.users.RegisteredCheck</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegCheck</servlet-name>
+        <url-pattern>/regcheck</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JSPCount</servlet-name>
+        <jsp-file>/view/test.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JSPCount</servlet-name>
+        <url-pattern>/testcount</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>auth</servlet-name>
+        <jsp-file>/view/authentication.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>auth</servlet-name>
+        <url-pattern>/authentication</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>productView</servlet-name>
+        <jsp-file>/view/productView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productView</servlet-name>
+        <url-pattern>/productview</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductAdd</servlet-name>
+        <servlet-class>com.yush.product.ProductAddToBacket</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductAdd</servlet-name>
+        <url-pattern>/productadd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClearBacket</servlet-name>
+        <servlet-class>com.yush.product.ClearProductBacket</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClearBacket</servlet-name>
+        <url-pattern>/clearbacket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CompletePurchase</servlet-name>
+        <servlet-class>com.yush.product.CompletePurchase</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompletePurchase</servlet-name>
+        <url-pattern>/completepurchase</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>newProductAddView</servlet-name>
+        <jsp-file>/view/newProductAddForm.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newProductAddView</servlet-name>
+        <url-pattern>/newproductadd</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>NewProductAdd</servlet-name>
+        <servlet-class>com.yush.product.ProductAdd</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewProductAdd</servlet-name>
+        <url-pattern>/newproductaddserv</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductDeleteView</servlet-name>
+        <jsp-file>/view/productDeleteForm.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDeleteView</servlet-name>
+        <url-pattern>/productdel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductDelete</servlet-name>
+        <servlet-class>com.yush.product.ProductDelete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDelete</servlet-name>
+        <url-pattern>/productdeleteserv</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductUpdateView</servlet-name>
+        <jsp-file>/view/productUpdateForm.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductUpdateView</servlet-name>
+        <url-pattern>/productupdate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductUpdate</servlet-name>
+        <servlet-class>com.yush.product.ProductUpdate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductUpdate</servlet-name>
+        <url-pattern>/productupdateserv</url-pattern>
+    </servlet-mapping>
+</web-app>
