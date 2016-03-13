@@ -1,18 +1,16 @@
 package com.yush.entity.components;
 
 
-public class Characteristic {
-    private Integer id;
+import com.yush.entity.Identity;
+
+public class Characteristic implements Identity {
+    private long id;
     private String characteristicName;
     private String characteristicValue;
     private Integer productId;
 
-    public Integer getId() {
+    public long getID() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCharacteristicName() {

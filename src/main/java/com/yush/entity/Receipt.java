@@ -1,15 +1,15 @@
 package com.yush.entity;
 
 
-public class Receipt {
-    private Integer id;
+public class Receipt implements Identity {
+    private long id;
     private Integer proguctId;
     private Integer orderId;
     private Integer quantity;
     private Double price;
     private Double totalPrice;
 
-    public Integer getId() {
+    public long getID() {
         return id;
     }
 

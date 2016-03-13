@@ -1,6 +1,5 @@
 package com.yush.dao;
 
-import com.yush.entity.Identity;
 
 import java.util.List;
 

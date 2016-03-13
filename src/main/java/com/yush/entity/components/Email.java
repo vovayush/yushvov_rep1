@@ -1,8 +1,10 @@
 package com.yush.entity.components;
 
 
-public class Email {
-    private Integer id;
+import com.yush.entity.Identity;
+
+public class Email implements Identity{
+    private long id;
     private String emailAddress;
     private Integer userId;
 
@@ -14,8 +16,8 @@ public class Email {
         return "emailAddress='" + emailAddress;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public long getID() {
+        return id;
     }
 
     public String getEmailAddress() {

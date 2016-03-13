@@ -1,6 +1,5 @@
 <%@ page import="com.yush.entity.Product" %>
 <%@ page import="com.yush.dao.ProductsDAOImpl" %>
-<%@ page import="com.yush.dao.DAO" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

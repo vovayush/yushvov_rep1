@@ -11,7 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import java.util.List;
 
 public class UsersDAOImpl extends GenericDAO implements UsersDAO {
-    private static final Logger log = Logger.getLogger(ProductsDAOImpl.class);
+    private static final Logger LOG = Logger.getLogger(ProductsDAOImpl.class);
 
     public UsersDAOImpl() {
     }
@@ -34,7 +34,7 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
             Criteria criteria = session.createCriteria(User.class);
             user = (User) criteria.add(Restrictions.eq("login", login)).uniqueResult();
         } catch (HibernateException e) {
-            log.error("Problem with getAll" + e.getMessage());
+            LOG.error("Problem with getAll" + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

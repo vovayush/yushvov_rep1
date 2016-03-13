@@ -1,13 +1,15 @@
 package com.yush.entity.components;
 
 
-public class Comment {
-    private Integer id;
+import com.yush.entity.Identity;
+
+public class Comment implements Identity {
+    private long id;
     private String comment;
     private Integer userId;
     private Integer productId;
 
-    public Integer getId() {
+    public long getID() {
         return id;
     }
 

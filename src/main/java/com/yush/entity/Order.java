@@ -1,7 +1,7 @@
 package com.yush.entity;
 
-public class Order {
-    private Integer id;
+public class Order implements Identity {
+    private long id;
     private Integer userId;
     private String date;
     private String shippingDate;
@@ -9,7 +9,7 @@ public class Order {
     private Double totalPrice;
     private String description;
 
-    public Integer getId() {
+    public long getID() {
         return id;
     }
 

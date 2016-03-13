@@ -1,8 +1,10 @@
 package com.yush.entity.components;
 
 
-public class Address {
-    private Integer id;
+import com.yush.entity.Identity;
+
+public class Address implements Identity {
+    private long id;
     private String country;
     private String region;
     private String raion;
@@ -29,12 +31,8 @@ public class Address {
                 '}';
     }
 
-    public Integer getId() {
+    public long getID() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCountry() {

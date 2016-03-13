@@ -17,7 +17,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductMain")
 public class ProductMain extends HttpServlet {
-    private static final Logger log = Logger.getLogger(ProductMain.class);
+    private static final Logger LOG = Logger.getLogger(ProductMain.class);
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class ProductMain extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.debug("Main page");
+        LOG.debug("Main page");
         ProductsDAOImpl productsDAO = new ProductsDAOImpl();
         List<Product> productList = productsDAO.getAll();
         if (productList != null) {
@@ -39,7 +39,7 @@ public class ProductMain extends HttpServlet {
                 response.getWriter().println("Vendor: " + value.getVendor());
             }
         } else {
-            log.debug("list=null");
+            LOG.debug("list=null");
         }
         Product product2 = productsDAO.getByID(4);
 
@@ -49,8 +49,8 @@ public class ProductMain extends HttpServlet {
             response.getWriter().println("Price: " + product2.getPrice());
             response.getWriter().println("Vendor: " + product2.getVendor());
         } else {
-            if (log.isDebugEnabled()) {
-                log.debug("product2==null");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("product2==null");
             }
         }
     }

@@ -1,7 +1,9 @@
 package com.yush.entity.components;
 
-public class Phone {
-    private Integer id;
+import com.yush.entity.Identity;
+
+public class Phone implements Identity {
+    private long id;
     private String phoneNumber;
     private Integer userId;
 
@@ -24,7 +26,7 @@ public class Phone {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getId() {
+    public long getID() {
 
         return id;
     }
