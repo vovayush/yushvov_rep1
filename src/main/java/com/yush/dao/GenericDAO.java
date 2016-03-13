@@ -7,6 +7,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract  class GenericDAO<T extends Identity> implements DAO<T> {
 
     private static final Logger LOG = Logger.getLogger(ProductsDAOImpl.class);
@@ -60,5 +63,36 @@ public abstract  class GenericDAO<T extends Identity> implements DAO<T> {
         }
     }
 
+    public T getByID(long key, Class clazz) {
+        T entity = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            entity = (T)session.load(clazz, key);
+            LOG.debug("entity = " + entity);
+        } catch (HibernateException e) {
+            LOG.error("Problem with get product by id" + e.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return entity;
+    }
+
+    public List<T> getAll(Class clazz) {
+        List<T> userList = new ArrayList<T>();
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            userList = session.createCriteria(clazz).list();
+        } catch (HibernateException e) {
+            LOG.error("Problem with getAll" + e.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return userList;
+    }
 
 }

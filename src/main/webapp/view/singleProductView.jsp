@@ -1,5 +1,6 @@
 <%@ page import="com.yush.entity.Product" %>
 <%@ page import="com.yush.dao.ProductsDAOImpl" %>
+<%@ page import="com.yush.dao.DAO" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -11,7 +12,7 @@
 String ids = request.getParameter("id");
 %>
 <% if (ids != null && !ids.equals("")) {
-    Integer id = Integer.parseInt(ids);
+    long id = Long.parseLong(ids);
     ProductsDAOImpl productDao = new ProductsDAOImpl();
     Product product = productDao.getByID(id);
     request.setAttribute("name", product.getName());

@@ -8,7 +8,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDAOImpl extends GenericDAO implements UsersDAO {
@@ -18,35 +17,12 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
     }
 
     public User getByID(long key) {
-        User user = null;
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            user = (User) session.load(User.class, key);
-        } catch (HibernateException e) {
-            log.error("Problem with get product by id" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        User user = (User)getByID(key, User.class);
         return user;
     }
 
-
     public List<User> getAll() {
-        List<User> userList = new ArrayList<User>();
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            userList = session.createCriteria(User.class).list();
-        } catch (HibernateException e) {
-            log.error("Problem with getAll" + e.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        List<User> userList = super.getAll(User.class);
         return userList;
     }
 
