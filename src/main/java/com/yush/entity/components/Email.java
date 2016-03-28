@@ -2,19 +2,25 @@ package com.yush.entity.components;
 
 
 import com.yush.entity.Identity;
+import com.yush.entity.User;
+import com.yush.util.Constants;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "emails")
 public class Email implements Identity{
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
+    @Column(name = "email")
     private String emailAddress;
-    private Integer userId;
 
     public Email() {
     }
 
-    @Override
-    public String toString() {
-        return "emailAddress='" + emailAddress;
-    }
 
     public long getID() {
         return id;
@@ -28,11 +34,9 @@ public class Email implements Identity{
         this.emailAddress = emailAddress;
     }
 
-    public Integer getUserId() {
-        return userId;
+    @Override
+    public String toString() {
+        return emailAddress;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 }

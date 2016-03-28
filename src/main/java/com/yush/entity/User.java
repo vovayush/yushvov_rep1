@@ -1,8 +1,13 @@
 package com.yush.entity;
 
+import com.yush.entity.components.Email;
+import com.yush.util.Constants;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -23,8 +28,25 @@ public class User implements Identity{
     private String password;
     @Column(name = "description")
     private String description;
+   // protected Set<Email> userEmails = new HashSet<Email>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Email.class)
+    /*@JoinTable(name = "emails", joinColumns = {@JoinColumn(
+    name = "id", nullable = false)}, inverseJoinColumns = {*/
+    @JoinColumn(name = "user_id", nullable = false)/*}
+    )*/
+    protected Set<Email> userEmails = new HashSet<Email>();
+
+    public Set<Email> getEmails() {
+        return userEmails;
+    }
+    public void setEmails(Set<Email> userEmails) {
+        this.userEmails = userEmails;
+    }
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)*/
 
     public User() {
+
     }
 
     public User(String firstName, String lastName, String login, String password, String description) {
@@ -33,6 +55,7 @@ public class User implements Identity{
         this.login = login;
         this.password = password;
         this.description = description;
+
     }
 
     public String getDescription() {
@@ -83,8 +106,14 @@ public class User implements Identity{
         return password;
     }
 
+   /* public Collection<Email> getEmails() {
+        return emails;
+    }
 
-    @Override
+    public void setEmails(Collection<Email> emails) {
+        this.emails = emails;
+    }
+   */ @Override
     public String toString() {
         return (firstName + " " + lastName);
     }

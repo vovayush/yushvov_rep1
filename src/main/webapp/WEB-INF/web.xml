@@ -142,4 +142,13 @@
         <servlet-name>ProductUpdate</servlet-name>
         <url-pattern>/productupdateserv</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UsersView</servlet-name>
+        <jsp-file>/view/allUsersView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersView</servlet-name>
+        <url-pattern>/usersview</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -17,6 +17,7 @@ public class ProductsDAOImpl extends GenericDAO implements ProductsDAO {
     }
 
     public List<Product> getAll() {
+        super.setEntityClass(Product.class);
         List<Product> productList = super.getAll(Product.class);
         return productList;
     }

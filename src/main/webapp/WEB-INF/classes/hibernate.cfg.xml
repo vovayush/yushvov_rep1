@@ -13,9 +13,10 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">false</property>
         <property name="current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">true</property>
 
-        <mapping class="com.yush.entity.Product" />
-        <mapping class="com.yush.entity.User" />
-
+        <mapping class="com.yush.entity.Product"/>
+        <mapping class="com.yush.entity.User"/>
+        <mapping class="com.yush.entity.components.Email"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,5 +1,6 @@
 package com.yush.product;
 
+import com.yush.dao.ProductsDAO;
 import com.yush.dao.ProductsDAOImpl;
 import com.yush.entity.Product;
 import org.apache.log4j.Logger;
@@ -29,7 +30,7 @@ public class ProductMain extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOG.debug("Main page");
-        ProductsDAOImpl productsDAO = new ProductsDAOImpl();
+        ProductsDAO productsDAO = new ProductsDAOImpl();
         List<Product> productList = productsDAO.getAll();
         if (productList != null) {
             for (Product value : productList) {
@@ -41,7 +42,7 @@ public class ProductMain extends HttpServlet {
         } else {
             LOG.debug("list=null");
         }
-        Product product2 = productsDAO.getByID(4);
+        Product product2 = (Product)productsDAO.getByID(4);
 
         if (product2 != null) {
             response.getWriter().println("Name: " + product2.getName());

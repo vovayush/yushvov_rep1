@@ -22,6 +22,7 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
     }
 
     public List<User> getAll() {
+        super.setEntityClass(User.class);
         List<User> userList = super.getAll(User.class);
         return userList;
     }
