@@ -31,8 +31,6 @@ public class User extends SceletonEntity {
     public void setEmails(Set<Email> userEmails) {
         this.userEmails = userEmails;
     }
-    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @LazyCollection(LazyCollectionOption.FALSE)*/
 
     public User() {
 
