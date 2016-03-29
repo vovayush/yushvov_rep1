@@ -1,7 +1,6 @@
 package com.yush.entity;
 
 import com.yush.entity.components.Email;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.*;
@@ -85,14 +84,8 @@ public class User extends SceletonEntity {
         return password;
     }
 
-   /* public Collection<Email> getEmails() {
-        return emails;
-    }
 
-    public void setEmails(Collection<Email> emails) {
-        this.emails = emails;
-    }
-   */ @Override
+    @Override
     public String toString() {
         return (firstName + " " + lastName);
     }
