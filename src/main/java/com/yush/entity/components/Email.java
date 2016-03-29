@@ -2,6 +2,7 @@ package com.yush.entity.components;
 
 
 import com.yush.entity.Identity;
+import com.yush.entity.SceletonEntity;
 import com.yush.entity.User;
 import com.yush.util.Constants;
 import org.hibernate.annotations.GenericGenerator;
@@ -10,20 +11,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "emails")
-public class Email implements Identity{
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    private long id;
+public class Email extends SceletonEntity {
+
     @Column(name = "email")
     private String emailAddress;
 
     public Email() {
-    }
-
-
-    public long getID() {
-        return id;
     }
 
     public String getEmailAddress() {

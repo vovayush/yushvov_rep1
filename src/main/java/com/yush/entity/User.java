@@ -1,23 +1,15 @@
 package com.yush.entity;
 
 import com.yush.entity.components.Email;
-import com.yush.util.Constants;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
 @Table(name = "users")
-public class User implements Identity{
+public class User extends SceletonEntity {
 
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
-    private long id;
     @Column(name = "firstname")
     private String firstName;
     @Column(name = "lastname")
@@ -28,12 +20,9 @@ public class User implements Identity{
     private String password;
     @Column(name = "description")
     private String description;
-   // protected Set<Email> userEmails = new HashSet<Email>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Email.class)
-    /*@JoinTable(name = "emails", joinColumns = {@JoinColumn(
-    name = "id", nullable = false)}, inverseJoinColumns = {*/
-    @JoinColumn(name = "user_id", nullable = false)/*}
-    )*/
+    @JoinColumn(name = "user_id", nullable = false)
+
     protected Set<Email> userEmails = new HashSet<Email>();
 
     public Set<Email> getEmails() {
@@ -64,14 +53,6 @@ public class User implements Identity{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getID() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
