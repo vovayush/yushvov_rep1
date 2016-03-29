@@ -49,7 +49,7 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
     public int insert (T entity) {
         boolean result = false;
         try {
-           // session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(entity);
             session.getTransaction().commit();
@@ -65,7 +65,7 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
 
     public void update(T entity) {
         try {
-            //session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.update(entity);
             session.getTransaction().commit();
@@ -80,7 +80,7 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
 
     public void delete(T entity) {
         try {
-           // session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(entity);
             session.getTransaction().commit();
@@ -96,11 +96,12 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
     public T getByID(long key, Class clazz) {
         T entity = null;
         try {
-            //session = HibernateUtil.getSessionFactory().openSession();
-            getSession().getTransaction().begin();
-            entity = (T)getSession().get(clazz, key);
+            session = HibernateUtil.getSessionFactory().openSession();
+            //getSession().getTransaction().begin();
+            //entity = (T)getSession().get(clazz, key);
+            entity = (T)session.get(clazz, key);
             LOG.debug("entity = " + entity);
-            getSession().getTransaction().commit();
+            //getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with get product by id" + e.getMessage());
         } finally {
@@ -115,20 +116,22 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
         List<T> list = new ArrayList<T>();
         try {
             LOG.debug("clazz = " + clazz);
-           // session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             LOG.debug("session = " + session);
-            getSession().getTransaction().begin();
-            list = createCriteria().setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            //session.getTransaction().begin();
 
-            LOG.debug("list = " + list);
-            LOG.debug("session = " + session);
-            getSession().getTransaction().commit();
+            //getSession().getTransaction().begin();
+           // list = createCriteria().setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            list = session.createCriteria(clazz).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            //LOG.debug("list = " + list);
+            //LOG.debug("session = " + session);
+            //getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with getAll" + e.getMessage());
         } finally {
-            /*if (session != null && session.isOpen()) {
+            if (session != null && session.isOpen()) {
                 session.close();
-            }*/
+            }
         }
         return list;
     }
