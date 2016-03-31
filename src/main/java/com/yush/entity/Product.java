@@ -11,12 +11,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "products")
 
-public class Product implements Identity{
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
-    private long id;
+public class Product extends SceletonEntity {
+
     @Column(name = "p_name")
     private String name;
     @Column(name = "description")
@@ -35,17 +31,14 @@ public class Product implements Identity{
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, Double price, Integer quantity) {
-        this.id = id;
+    public Product(String name, String description, Double price, Integer quantity) {
+
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public long getID() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -114,9 +107,6 @@ public class Product implements Identity{
         this.quantity = quantity;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public static void copyProduct(Product productFrom, Product productTo) {
         productTo.setId(productFrom.getID());
@@ -128,7 +118,6 @@ public class Product implements Identity{
     @Override
     public String toString() {
         return "product{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
@@ -146,7 +135,7 @@ public class Product implements Identity{
 
         Product product = (Product) o;
 
-        if (id != product.id) return false;
+        if (super.getID() != product.getID()) return false;
         if (!name.equals(product.name)) return false;
         if (description != null ? !description.equals(product.description) : product.description != null) return false;
         if (!price.equals(product.price)) return false;
@@ -159,6 +148,6 @@ public class Product implements Identity{
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return (int) (super.getID() ^ (super.getID() >>> 32));
     }
 }

@@ -116,22 +116,22 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
         List<T> list = new ArrayList<T>();
         try {
             LOG.debug("clazz = " + clazz);
-            session = HibernateUtil.getSessionFactory().openSession();
+            //session = HibernateUtil.getSessionFactory().openSession();
             LOG.debug("session = " + session);
             //session.getTransaction().begin();
 
-            //getSession().getTransaction().begin();
-           // list = createCriteria().setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-            list = session.createCriteria(clazz).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            getSession().getTransaction().begin();
+            list = createCriteria().setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            //list = session.createCriteria(clazz).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
             //LOG.debug("list = " + list);
             //LOG.debug("session = " + session);
-            //getSession().getTransaction().commit();
+            getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with getAll" + e.getMessage());
         } finally {
-            if (session != null && session.isOpen()) {
+            /*if (session != null && session.isOpen()) {
                 session.close();
-            }
+            }*/
         }
         return list;
     }

@@ -16,4 +16,8 @@ public abstract class SceletonEntity implements Identity {
     public long getID() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

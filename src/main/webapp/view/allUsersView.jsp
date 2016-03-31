@@ -3,6 +3,7 @@
 <%@ page import="com.yush.entity.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.yush.entity.components.Email" %>
+<%@ page import="com.yush.entity.components.Phone" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -36,6 +37,15 @@
 
   Email = ${email} <br>
 
+  <%
+      }
+  %>
+  <br>
+  <%
+    for(Phone phone : user.getPhones()) {
+      request.setAttribute("phone", phone.toString());
+  %>
+  Phone = ${phone} <br>
   <%
       }
   %>

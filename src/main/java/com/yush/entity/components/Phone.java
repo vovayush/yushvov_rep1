@@ -1,10 +1,21 @@
 package com.yush.entity.components;
 
 import com.yush.entity.Identity;
+import com.yush.entity.SceletonEntity;
 
-public class Phone implements Identity {
-    private long id;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+//@Embeddable
+@Entity
+@Table(name = "phones")
+public class Phone extends SceletonEntity {
+   // private long id;
+    @Column(name = "phone_number")
     private String phoneNumber;
+   /* @Column(name = "user_id")
     private Integer userId;
 
     public Integer getUserId() {
@@ -14,7 +25,7 @@ public class Phone implements Identity {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
+*/
     public Phone() {
     }
 
@@ -26,10 +37,10 @@ public class Phone implements Identity {
         this.phoneNumber = phoneNumber;
     }
 
-    public long getID() {
+   /* public long getID() {
 
         return id;
-    }
+    }*/
 
     @Override
     public String toString() {
