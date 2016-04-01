@@ -11,7 +11,7 @@ import javax.persistence.Table;
 //@Embeddable
 @Entity
 @Table(name = "phones")
-public class Phone extends SceletonEntity {
+public class Phone extends SceletonEntity /* implements Identity*/{
    // private long id;
     @Column(name = "phone_number")
     private String phoneNumber;

@@ -1,17 +1,38 @@
 package com.yush.entity.components;
 
 
-import com.yush.entity.Identity;
+import com.yush.entity.SceletonEntity;
 
-public class Address implements Identity {
-    private long id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "addresses")
+public class Address extends SceletonEntity {
+
+    @Column(name = "country")
     private String country;
+
+    @Column(name = "region")
     private String region;
+
+    @Column(name = "raion")
     private String raion;
+
+    @Column(name = "locality")
     private String locality;
+
+    @Column(name = "streetname")
     private String streetName;
+
+    @Column(name = "buildnumber")
     private String number;
+
+    @Column(name = "apartment")
     private String apartment;
+
+    @Column(name = "advancedinfo")
     private String advanced;
 
     public Address() {
@@ -29,10 +50,6 @@ public class Address implements Identity {
                 ", apartment='" + apartment + '\'' +
                 ", advanced='" + advanced + '\'' +
                 '}';
-    }
-
-    public long getID() {
-        return id;
     }
 
     public String getCountry() {

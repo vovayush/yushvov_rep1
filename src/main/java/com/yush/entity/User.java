@@ -1,5 +1,6 @@
 package com.yush.entity;
 
+import com.yush.entity.components.Address;
 import com.yush.entity.components.Email;
 import com.yush.entity.components.Phone;
 import com.yush.util.Constants;
@@ -39,20 +40,10 @@ public class User extends SceletonEntity {
     @JoinColumn(name = "user_id", nullable = false)
     protected Set<Phone> phones = new HashSet<Phone>();
 
-    public Set<Phone> getPhones() {
-        return phones;
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Address.class)
+    @JoinColumn(name = "user_id", nullable = false)
+    protected Set<Address> addresses = new HashSet<Address>();
 
-    public void setPhones(Set<Phone> phones) {
-        this.phones = phones;
-    }
-
-    public Set<Email> getEmails() {
-        return userEmails;
-    }
-    public void setEmails(Set<Email> userEmails) {
-        this.userEmails = userEmails;
-    }
 
     public User() {
 
@@ -66,6 +57,30 @@ public class User extends SceletonEntity {
         this.description = description;
 
     }
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Set<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(Set<Phone> phones) {
+        this.phones = phones;
+    }
+
+
+    public Set<Email> getEmails() {
+        return userEmails;
+    }
+    public void setEmails(Set<Email> userEmails) {
+        this.userEmails = userEmails;
+    }
+
 
     public String getDescription() {
         return description;
