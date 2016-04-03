@@ -2,6 +2,7 @@
 <%@ page import="com.yush.dao.ProductsDAO" %>
 <%@ page import="com.yush.dao.ProductsDAOImpl" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.yush.entity.components.PrComment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,7 +26,22 @@
   cost=${cost} <br>
   /view/singleProductView.jsp?id=${key} <br>
   <a href="/view/singleProductView.jsp?id=${key}">View more information</a> <br>
-  <%}
+  <br>
+  <%
+      for(PrComment prComment : product.getPrComments()) {
+        request.setAttribute("prComment", prComment.toString());
+
+  %>
+
+  Comment = ${prComment} <br>
+
+  <%
+      }
+  %>
+  <br>
+  <br>
+  <%
+    }
   %>
 </p>
 </body>

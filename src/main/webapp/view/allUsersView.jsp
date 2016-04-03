@@ -5,6 +5,7 @@
 <%@ page import="com.yush.entity.components.Email" %>
 <%@ page import="com.yush.entity.components.Phone" %>
 <%@ page import="com.yush.entity.components.Address" %>
+<%@ page import="com.yush.entity.components.PrComment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,7 +34,6 @@
   <%
      for(Email email : user.getEmails()) {
         request.setAttribute("email", email.toString());
-
   %>
 
   Email = ${email} <br>
@@ -56,6 +56,15 @@
       request.setAttribute("address", address.toString());
   %>
   Address = ${address} <br>
+  <%
+    }
+  %>
+  <br>
+  <%
+    for(PrComment prComment : user.getPrComments()) {
+      request.setAttribute("prComment", prComment.toString());
+  %>
+  Comment = ${prComment} <br>
   <%
     }
   %>

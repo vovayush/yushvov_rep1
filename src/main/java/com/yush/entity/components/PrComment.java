@@ -2,16 +2,30 @@ package com.yush.entity.components;
 
 
 import com.yush.entity.Identity;
+import com.yush.entity.Product;
+import com.yush.entity.SceletonEntity;
+import com.yush.entity.User;
 
-public class Comment implements Identity {
-    private long id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "comments")
+public class PrComment extends SceletonEntity {
+
+    @Column(name = "p_comment")
     private String comment;
+    @Column(name = "user_id")
     private Integer userId;
+    @Column(name = "product_id")
     private Integer productId;
 
-    public long getID() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name="product_id", insertable = false, updatable = false)
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", insertable = false, updatable = false)
+    private User user;
 
     public String getComment() {
         return comment;
@@ -39,8 +53,6 @@ public class Comment implements Identity {
 
     @Override
     public String toString() {
-        return "Comment{" +
-                "comment='" + comment + '\'' +
-                '}';
+        return comment;
     }
 }

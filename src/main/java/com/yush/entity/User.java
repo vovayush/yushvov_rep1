@@ -3,6 +3,7 @@ package com.yush.entity;
 import com.yush.entity.components.Address;
 import com.yush.entity.components.Email;
 import com.yush.entity.components.Phone;
+import com.yush.entity.components.PrComment;
 import com.yush.util.Constants;
 
 import javax.persistence.*;
@@ -44,6 +45,10 @@ public class User extends SceletonEntity {
     @JoinColumn(name = "user_id", nullable = false)
     protected Set<Address> addresses = new HashSet<Address>();
 
+   /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = PrComment.class)
+    @JoinColumn(name = "user_id", nullable = false)*/
+   @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    protected Set<PrComment> prComments = new HashSet<PrComment>();
 
     public User() {
 
@@ -57,6 +62,7 @@ public class User extends SceletonEntity {
         this.description = description;
 
     }
+
     public Set<Address> getAddresses() {
         return addresses;
     }
@@ -67,6 +73,14 @@ public class User extends SceletonEntity {
 
     public Set<Phone> getPhones() {
         return phones;
+    }
+
+    public Set<PrComment> getPrComments() {
+        return prComments;
+    }
+
+    public void setPrComments(Set<PrComment> prComments) {
+        this.prComments = prComments;
     }
 
     public void setPhones(Set<Phone> phones) {

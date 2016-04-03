@@ -1,12 +1,11 @@
 package com.yush.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.yush.entity.components.PrComment;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -28,6 +27,11 @@ public class Product extends SceletonEntity {
     @Column(name = "detail")
     private String detail;
 
+   /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = PrComment.class)
+    @JoinColumn(name = "product_id", nullable = false)*/
+   @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
+    protected Set<PrComment> prComments = new HashSet<PrComment>();
+
     public Product() {
     }
 
@@ -39,7 +43,13 @@ public class Product extends SceletonEntity {
         this.quantity = quantity;
     }
 
+    public Set<PrComment> getPrComments() {
+        return prComments;
+    }
 
+    public void setPrComments(Set<PrComment> prComments) {
+        this.prComments = prComments;
+    }
     public String getName() {
         return name;
     }

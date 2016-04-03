@@ -20,5 +20,6 @@
         <mapping class="com.yush.entity.components.Email"/>
         <mapping class="com.yush.entity.components.Phone"/>
         <mapping class="com.yush.entity.components.Address"/>
+        <mapping class="com.yush.entity.components.PrComment"/>
     </session-factory>
 </hibernate-configuration>
