@@ -3,6 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost/eshop_data</property>
         <property name="connection.username">adm</property>
@@ -21,5 +22,7 @@
         <mapping class="com.yush.entity.components.Phone"/>
         <mapping class="com.yush.entity.components.Address"/>
         <mapping class="com.yush.entity.components.PrComment"/>
-    </session-factory>
+        <mapping class="com.yush.entity.components.Characteristic"/>
+
+        </session-factory>
 </hibernate-configuration>

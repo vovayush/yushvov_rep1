@@ -3,6 +3,7 @@
 <%@ page import="com.yush.dao.ProductsDAOImpl" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.yush.entity.components.PrComment" %>
+<%@ page import="com.yush.entity.components.Characteristic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -37,6 +38,18 @@
 
   <%
       }
+  %>
+  <br>
+  <%
+    for(Characteristic characteristic : product.getCharacteristics()) {
+      request.setAttribute("characteristic", characteristic.toString());
+
+  %>
+
+  Characteristic = ${characteristic} <br>
+
+  <%
+    }
   %>
   <br>
   <br>

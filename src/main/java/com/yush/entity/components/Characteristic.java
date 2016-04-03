@@ -1,17 +1,20 @@
 package com.yush.entity.components;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-import com.yush.entity.Identity;
+import com.yush.entity.SceletonEntity;
 
-public class Characteristic implements Identity {
-    private long id;
+@Entity
+@Table(name = "characteristics")
+public class Characteristic extends SceletonEntity {
+
+    @Column(name = "c_name")
     private String characteristicName;
-    private String characteristicValue;
-    private Integer productId;
 
-    public long getID() {
-        return id;
-    }
+    @Column(name = "c_value")
+    private String characteristicValue;
 
     public String getCharacteristicName() {
         return characteristicName;
@@ -29,19 +32,9 @@ public class Characteristic implements Identity {
         this.characteristicValue = characteristicValue;
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
     @Override
     public String toString() {
-        return "Characteristic{" +
-                "characteristicName='" + characteristicName + '\'' +
-                ", characteristicValue='" + characteristicValue + '\'' +
-                '}';
+        return  "characteristicName='" + characteristicName + '\'' +
+                ", characteristicValue='" + characteristicValue;
     }
 }

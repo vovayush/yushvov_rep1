@@ -35,7 +35,7 @@ public class PrComment extends SceletonEntity {
         this.comment = comment;
     }
 
-    public Integer getUserId() {
+  /*  public Integer getUserId() {
         return userId;
     }
 
@@ -49,7 +49,7 @@ public class PrComment extends SceletonEntity {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
-    }
+    }*/
 
     @Override
     public String toString() {

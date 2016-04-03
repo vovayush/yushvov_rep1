@@ -2,6 +2,7 @@ package com.yush.entity;
 
 import javax.persistence.*;
 
+import com.yush.entity.components.Characteristic;
 import com.yush.entity.components.PrComment;
 
 import java.util.HashSet;
@@ -32,6 +33,10 @@ public class Product extends SceletonEntity {
    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
     protected Set<PrComment> prComments = new HashSet<PrComment>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Characteristic.class)
+    @JoinColumn(name = "product_id", nullable = false)
+    protected Set<Characteristic> characteristics = new HashSet<Characteristic>();
+
     public Product() {
     }
 
@@ -41,6 +46,14 @@ public class Product extends SceletonEntity {
         this.description = description;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public Set<Characteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(Set<Characteristic> characteristics) {
+        this.characteristics = characteristics;
     }
 
     public Set<PrComment> getPrComments() {
