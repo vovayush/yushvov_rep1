@@ -23,6 +23,6 @@
         <mapping class="com.yush.entity.components.Address"/>
         <mapping class="com.yush.entity.components.PrComment"/>
         <mapping class="com.yush.entity.components.Characteristic"/>
-
+        <mapping class="com.yush.entity.Order"/>
         </session-factory>
 </hibernate-configuration>

@@ -1,39 +1,58 @@
 package com.yush.entity;
 
-public class Order implements Identity {
-    private long id;
-    private Integer userId;
-    private String date;
-    private String shippingDate;
+import org.hibernate.annotations.Columns;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = "orders")
+public class Order extends SceletonEntity {
+
+    @Column(name = "date")
+    private Timestamp date;
+
+    @Column(name = "shipping_date")
+    private Timestamp shippingDate;
+
+    @Column(name = "paid")
     private boolean paid;
-    private Double totalPrice;
+
+    @Column(name = "total_price")
+    private BigDecimal totalPrice;
+
+    @Column(name = "description")
     private String description;
 
-    public long getID() {
-        return id;
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", insertable = false, updatable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
-    public String getShippingDate() {
+    public Timestamp getShippingDate() {
         return shippingDate;
     }
 
-    public void setShippingDate(String shippingDate) {
+    public void setShippingDate(Timestamp shippingDate) {
         this.shippingDate = shippingDate;
     }
 
@@ -45,11 +64,11 @@ public class Order implements Identity {
         this.paid = paid;
     }
 
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

@@ -50,6 +50,9 @@ public class User extends SceletonEntity {
    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     protected Set<PrComment> prComments = new HashSet<PrComment>();
 
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    protected Set<Order> orders = new HashSet<Order>();
+
     public User() {
 
     }
@@ -61,6 +64,14 @@ public class User extends SceletonEntity {
         this.password = password;
         this.description = description;
 
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     public Set<Address> getAddresses() {
