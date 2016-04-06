@@ -1,17 +1,27 @@
 package com.yush.entity;
 
+import javax.persistence.*;
 
-public class Receipt implements Identity {
-    private long id;
+@Entity
+@Table(name = "receipts")
+public class Receipt extends SceletonEntity {
+    @Column(name = "product_id")
     private Integer proguctId;
+    @Column(name = "order_id")
     private Integer orderId;
+    @Column(name = "quantity")
     private Integer quantity;
+    @Column(name = "price")
     private Double price;
+    @Column(name = "total_price")
     private Double totalPrice;
+    @ManyToOne
+    @JoinColumn(name="product_id", insertable = false, updatable = false)
+    private Product product;
 
-    public long getID() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name="order_id", insertable = false, updatable = false)
+    private Order order;
 
     public Integer getProguctId() {
         return proguctId;

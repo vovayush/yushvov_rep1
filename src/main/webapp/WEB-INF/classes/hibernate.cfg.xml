@@ -24,5 +24,6 @@
         <mapping class="com.yush.entity.components.PrComment"/>
         <mapping class="com.yush.entity.components.Characteristic"/>
         <mapping class="com.yush.entity.Order"/>
+        <mapping class="com.yush.entity.Receipt"/>
         </session-factory>
 </hibernate-configuration>
