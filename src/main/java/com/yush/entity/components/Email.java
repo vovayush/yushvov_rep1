@@ -18,6 +18,9 @@ public class Email extends SceletonEntity {
 
     public Email() {
     }
+    public Email(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
     public String getEmailAddress() {
         return emailAddress;

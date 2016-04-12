@@ -2,6 +2,7 @@ package com.yush.users;
 
 import com.yush.dao.UsersDAOImpl;
 import com.yush.entity.User;
+import com.yush.entity.components.Email;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -18,6 +19,7 @@ public class RegisteredCheck extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletContext();
+        Email email = null;
         if (requestParameterCheck(request)) {
             User createdUser = new User(request.getParameter("firstName"),
                     request.getParameter("lastName"),
@@ -25,6 +27,10 @@ public class RegisteredCheck extends HttpServlet {
                     request.getParameter("password"),
                     request.getParameter("description"));
             UsersDAOImpl usersDAO = new UsersDAOImpl();
+            if (!request.getParameter("email").isEmpty()) {
+                email = new Email(request.getParameter("email"));
+                createdUser.getEmails().add(email);
+            }
             usersDAO.insert(createdUser);
             request.getSession().setAttribute("badAuthentication", false);
             RequestDispatcher rd = context.getRequestDispatcher("/view/viewAllUser.jsp");

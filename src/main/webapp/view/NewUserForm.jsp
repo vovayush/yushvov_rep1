@@ -16,6 +16,8 @@
   Password: <input type="text" name="password"/> <br>
   <br />
   Description: <input type="text" name="description"/> <br>
+  <br />
+  Email: <input type="text" name="email"/> <br>
   <input type="submit" value="Submit"/>
 </form>
 
