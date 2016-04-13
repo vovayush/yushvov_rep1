@@ -2,7 +2,9 @@ package com.yush.users;
 
 import com.yush.dao.UsersDAOImpl;
 import com.yush.entity.User;
+import com.yush.entity.components.Address;
 import com.yush.entity.components.Email;
+import com.yush.entity.components.Phone;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -20,6 +22,9 @@ public class RegisteredCheck extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletContext();
         Email email = null;
+        Address address = null;
+        Phone phone = null;
+
         if (requestParameterCheck(request)) {
             User createdUser = new User(request.getParameter("firstName"),
                     request.getParameter("lastName"),
@@ -31,6 +36,16 @@ public class RegisteredCheck extends HttpServlet {
                 email = new Email(request.getParameter("email"));
                 createdUser.getEmails().add(email);
             }
+            if (!request.getParameter("address").isEmpty()) {
+               /* address = new Address(request.getParameter("address"));
+                createdUser.getAddresses().add(address);*/
+            }
+            if (!request.getParameter("phone").isEmpty()) {
+                phone = new Phone(request.getParameter("phone"));
+                createdUser.getPhones().add(phone);
+            }
+
+
             usersDAO.insert(createdUser);
             request.getSession().setAttribute("badAuthentication", false);
             RequestDispatcher rd = context.getRequestDispatcher("/view/viewAllUser.jsp");

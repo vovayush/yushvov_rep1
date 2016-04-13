@@ -28,6 +28,9 @@ public class Phone extends SceletonEntity /* implements Identity*/{
 */
     public Phone() {
     }
+    public Phone(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

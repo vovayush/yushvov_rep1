@@ -18,6 +18,11 @@
   Description: <input type="text" name="description"/> <br>
   <br />
   Email: <input type="text" name="email"/> <br>
+  <br />
+  Address: <input type="text" name="address"/> <br>
+  <br />
+  Phone: <input type="text" name="phone"/> <br>
+
   <input type="submit" value="Submit"/>
 </form>
 
