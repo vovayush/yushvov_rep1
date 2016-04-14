@@ -36,9 +36,18 @@ public class RegisteredCheck extends HttpServlet {
                 email = new Email(request.getParameter("email"));
                 createdUser.getEmails().add(email);
             }
-            if (!request.getParameter("address").isEmpty()) {
-               /* address = new Address(request.getParameter("address"));
-                createdUser.getAddresses().add(address);*/
+            if ("on".equals(request.getParameter("address"))) {
+                address = new Address();
+                address.setCountry(request.getParameter("country"));
+                address.setRegion(request.getParameter("region"));
+                address.setRaion(request.getParameter("raion"));
+                address.setLocality(request.getParameter("locality"));
+                address.setStreetName(request.getParameter("streetName"));
+                address.setNumber(request.getParameter("number"));
+                address.setApartment(request.getParameter("apartment"));
+                address.setAdvanced(request.getParameter("advanced"));
+
+                createdUser.getAddresses().add(address);
             }
             if (!request.getParameter("phone").isEmpty()) {
                 phone = new Phone(request.getParameter("phone"));
