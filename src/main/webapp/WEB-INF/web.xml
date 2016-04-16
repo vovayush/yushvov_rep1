@@ -150,5 +150,20 @@
         <servlet-name>UsersView</servlet-name>
         <url-pattern>/usersview</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>UserDeleteView</servlet-name>
+        <jsp-file>/view/userDeleteForm.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserDeleteView</servlet-name>
+        <url-pattern>/userdelete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UserDelete</servlet-name>
+        <servlet-class>com.yush.users.UsersDelete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserDelete</servlet-name>
+        <url-pattern>/userdeleteserv</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -49,59 +49,65 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
     public int insert (T entity) {
         boolean result = false;
         try {
+/*
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(entity);
-            session.getTransaction().commit();
+*/
+            getSession().getTransaction().begin();
+            getSession().save(entity);
+            getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with insert" + e.getMessage());
         } finally {
-            if (session != null && session.isOpen()) {
+           /* if (session != null && session.isOpen()) {
                 session.close();
-            }
+            }*/
         }
         return result ? 1 : 0;
     }
 
     public void update(T entity) {
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(entity);
-            session.getTransaction().commit();
+            getSession().getTransaction().begin();
+            getSession().update(entity);
+            getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with update" + e.getMessage());
         } finally {
-            if (session != null && session.isOpen()) {
+           /* if (session != null && session.isOpen()) {
                 session.close();
-            }
+            }*/
         }
     }
 
     public void delete(T entity) {
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            getSession().getTransaction().begin();
+
+            /*session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(entity);
-            session.getTransaction().commit();
+            session.getTransaction().commit();*/
+            getSession().delete(entity);
+            getSession().getTransaction().commit();
+
         } catch (HibernateException e) {
             LOG.error("Problem with delete" + e.getMessage());
         } finally {
-            if (session != null && session.isOpen()) {
+            /*if (session != null && session.isOpen()) {
                 session.close();
-            }
+            }*/
         }
     }
 
     public T getByID(long key, Class clazz) {
         T entity = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            //getSession().getTransaction().begin();
+            //session = HibernateUtil.getSessionFactory().openSession();
+            getSession().getTransaction().begin();
             //entity = (T)getSession().get(clazz, key);
-            entity = (T)session.get(clazz, key);
+            entity = (T)getSession().get(clazz, key);
             LOG.debug("entity = " + entity);
-            //getSession().getTransaction().commit();
+            getSession().getTransaction().commit();
         } catch (HibernateException e) {
             LOG.error("Problem with get product by id" + e.getMessage());
         } finally {

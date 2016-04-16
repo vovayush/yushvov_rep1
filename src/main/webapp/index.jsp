@@ -15,6 +15,6 @@
 <p>if you want go to product delete press <a href="productdel">E</a></p>
 <p>if you want go to product update press <a href="productupdate">F</a></p>
 <p>if you want to see users press <a href="usersview">G</a></p>
-
+<p>if you want go to user delete press <a href="userdelete">H</a></p>
 </body>
 </html>
