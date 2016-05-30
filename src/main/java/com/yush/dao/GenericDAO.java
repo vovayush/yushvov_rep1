@@ -9,19 +9,25 @@ import org.hibernate.Session;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public abstract class GenericDAO<T extends Identity> implements DAO<T> {
 
     private static final Logger LOG = Logger.getLogger(ProductsDAOImpl.class);
+    @Autowired
+    @Resource(name="sessionFactory")
     private static SessionFactory sessionFactory;
     private Class<T> entityClass;
 
-    static {
+    /*static {
         sessionFactory = new Configuration().configure().buildSessionFactory();
-    }
+    }*/
     private Session session;
 
 
