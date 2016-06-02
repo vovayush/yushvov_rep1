@@ -8,27 +8,34 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-       <context:component-scan base-package="com.yush" >
-       <!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
-    </context:component-scan>
+       <context:component-scan base-package="com.yush.dao" >
+
+       </context:component-scan>
+
+       <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+              <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+              <property name="url" value="jdbc:mysql://localhost/eshop_data"/>
+              <property name="username" value="adm"/>
+              <property name="password" value="q1w2e3"/>
+       </bean>-->
 
        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-              <property name="configLocation" value="classpath:hibernate.cfg.xml" />
-                <property name="mappingResources">
-                    <list>
-                         <value>hibernate.cfg.xml</value>
-                    </list>
-                </property>
+              <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+
+              <!--
+              <property name="dataSource" ref="dataSource"/>
+-->
+       </bean>
+       <bean id="productDao" class="com.yush.dao.ProductsDAOImpl">
+              <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <tx:annotation-driven />
+       <!--<tx:annotation-driven />
        <bean id="transactionManager"
              class="org.springframework.orm.hibernate4.HibernateTransactionManager">
               <property name="sessionFactory" ref="sessionFactory" />
-       </bean>
+       </bean>-->
 
        <bean id="persistenceExceptionTranslationPostProcessor"
              class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-
-
 </beans>

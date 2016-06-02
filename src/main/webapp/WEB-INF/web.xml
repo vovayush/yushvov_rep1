@@ -19,9 +19,9 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/config/applicationContext.xml</param-value>
     </context-param>
-   <!-- <listener>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>-->
+    </listener>
 
     <servlet>
         <servlet-name>Main</servlet-name>

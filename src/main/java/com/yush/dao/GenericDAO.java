@@ -11,17 +11,27 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
 public abstract class GenericDAO<T extends Identity> implements DAO<T> {
 
-    private static final Logger LOG = Logger.getLogger(ProductsDAOImpl.class);
-    @Autowired
-    @Resource(name="sessionFactory")
+    private static final Logger LOG = Logger.getLogger(GenericDAO.class);
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public static void setingSessionFactory(SessionFactory sessionFactory) {
+        GenericDAO.sessionFactory = sessionFactory;
+    }
+
+    /*@Autowired
+            @Resource(name="sessionFactory")*/
     private static SessionFactory sessionFactory;
     private Class<T> entityClass;
 
@@ -32,6 +42,7 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
 
 
     protected Session getSession() {
+        LOG.debug("sessionFactory = " + sessionFactory);
         session = sessionFactory.getCurrentSession();
         return session != null ? session : sessionFactory.openSession();
     }
