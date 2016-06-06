@@ -30,8 +30,6 @@ public abstract class GenericDAO<T extends Identity> implements DAO<T> {
         GenericDAO.sessionFactory = sessionFactory;
     }
 
-    /*@Autowired
-            @Resource(name="sessionFactory")*/
     private static SessionFactory sessionFactory;
     private Class<T> entityClass;
 

@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -20,6 +22,10 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
         User user = (User)getByID(key, User.class);
         return user;
     }
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        super.setingSessionFactory(sessionFactory);
+    }
 
     public List<User> getAll() {
         super.setEntityClass(User.class);
@@ -31,15 +37,15 @@ public class UsersDAOImpl extends GenericDAO implements UsersDAO {
         User user = null;
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = super.getSession();
             Criteria criteria = session.createCriteria(User.class);
             user = (User) criteria.add(Restrictions.eq("login", login)).uniqueResult();
         } catch (HibernateException e) {
             LOG.error("Problem with getAll" + e.getMessage());
         } finally {
-            if (session != null && session.isOpen()) {
+           /* if (session != null && session.isOpen()) {
                 session.close();
-            }
+            }*/
         }
         return user;
     }

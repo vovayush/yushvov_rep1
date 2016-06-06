@@ -27,8 +27,16 @@
 -->
        </bean>
        <bean id="productDao" class="com.yush.dao.ProductsDAOImpl">
+<!--
               <property name="sessionFactory" ref="sessionFactory"/>
+-->
        </bean>
+       <bean id="userDao" class="com.yush.dao.UsersDAOImpl">
+<!--
+              <property name="sessionFactory" ref="sessionFactory"/>
+-->
+       </bean>
+
 
        <!--<tx:annotation-driven />
        <bean id="transactionManager"
@@ -38,4 +46,7 @@
 
        <bean id="persistenceExceptionTranslationPostProcessor"
              class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+       <context:annotation-config>
+
+       </context:annotation-config>
 </beans>

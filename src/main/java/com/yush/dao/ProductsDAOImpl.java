@@ -3,6 +3,7 @@ package com.yush.dao;
 import com.yush.entity.Product;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ProductsDAOImpl extends GenericDAO implements ProductsDAO {
         List<Product> productList = super.getAll(Product.class);
         return productList;
     }
-
+    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         super.setingSessionFactory(sessionFactory);
     }
