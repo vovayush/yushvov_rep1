@@ -8,9 +8,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-       <context:component-scan base-package="com.yush.dao" >
+      <!-- <context:component-scan base-package="com.yush.dao" >
 
-       </context:component-scan>
+       </context:component-scan>-->
 
        <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
               <property name="driverClass" value="com.mysql.jdbc.Driver"/>
@@ -37,12 +37,23 @@
 -->
        </bean>
 
-
-       <!--<tx:annotation-driven />
+<!--
+       <tx:annotation-driven />
        <bean id="transactionManager"
              class="org.springframework.orm.hibernate4.HibernateTransactionManager">
               <property name="sessionFactory" ref="sessionFactory" />
-       </bean>-->
+       </bean>
+       &lt;!&ndash; ===========================   TRANSACTIONS   ========================= &ndash;&gt;
+
+       <tx:advice id="txAdvice" transaction-manager="transactionManager">
+              <tx:attributes>
+                     <tx:method name="get*" read-only="true"/>
+                     <tx:method name="find*" read-only="true"/>
+                     <tx:method name="*"/>
+              </tx:attributes>
+       </tx:advice>
+
+       <aop:aspectj-autoproxy proxy-target-class="true" />-->
 
        <bean id="persistenceExceptionTranslationPostProcessor"
              class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
