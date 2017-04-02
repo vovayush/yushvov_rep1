@@ -24,6 +24,17 @@
     </listener>
 
     <servlet>
+        <servlet-name>mainController</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mainController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--<servlet>
         <servlet-name>Main</servlet-name>
         <servlet-class>com.yush.product.ProductMain</servlet-class>
     </servlet>
@@ -31,7 +42,7 @@
     <servlet-mapping>
         <servlet-name>Main</servlet-name>
         <url-pattern>/main</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>AuthCheck</servlet-name>
@@ -69,14 +80,14 @@
         <servlet-name>auth</servlet-name>
         <url-pattern>/authentication</url-pattern>
     </servlet-mapping>
-    <servlet>
+    <!--<servlet>
         <servlet-name>productView</servlet-name>
         <jsp-file>/view/productView.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>productView</servlet-name>
         <url-pattern>/productview</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>ProductAdd</servlet-name>
         <servlet-class>com.yush.product.ProductAddToBacket</servlet-class>
