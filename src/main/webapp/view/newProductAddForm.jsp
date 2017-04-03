@@ -24,7 +24,7 @@
     <input type="text" name="vendor"/> <br>
     <br>
     Description:&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" name="decription"/> <br>
+    <input type="text" name="description"/> <br>
     <br>
     Detail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" name="detail"/> <br>

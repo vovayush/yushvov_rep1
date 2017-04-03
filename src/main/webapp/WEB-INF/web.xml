@@ -121,14 +121,14 @@
         <servlet-name>newProductAddView</servlet-name>
         <url-pattern>/newproductadd</url-pattern>
     </servlet-mapping>
-    <servlet>
+    <!--<servlet>
         <servlet-name>NewProductAdd</servlet-name>
         <servlet-class>com.yush.product.ProductAdd</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewProductAdd</servlet-name>
         <url-pattern>/newproductaddserv</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>ProductDeleteView</servlet-name>
         <jsp-file>/view/productDeleteForm.jsp</jsp-file>

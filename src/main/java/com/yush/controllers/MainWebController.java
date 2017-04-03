@@ -21,18 +21,7 @@ public class MainWebController {
         LOG.debug("Main page");
         ProductsDAO productsDAO = new ProductsDAOImpl();
         List<Product> productsList = productsDAO.getAll();
-        /*if (productList != null) {
-            for (Product value : productList) {
-                response.getWriter().println("Name: " + value.getName());
-                response.getWriter().println("Description: " + value.getDescription());
-                response.getWriter().println("Price: " + value.getPrice());
-                response.getWriter().println("Vendor: " + value.getVendor());
-            }
-        } else {
-            LOG.debug("list=null");
-        }*/
         ModelAndView modelAndView = new ModelAndView("mainView");
-        LOG.debug("productsList = " + productsList);
         modelAndView.addObject("productsList", productsList);
         return modelAndView;
     }

@@ -9,13 +9,13 @@
 
 
 <c:forEach var="product" items="${productsList}">
-    <c:out value="${product.name}"/> <br>
-    <c:out value="${product.description}"/> <br>
-    <c:out value="${product.group}"/> <br>
-    <c:out value="${product.vendor}"/> <br>
-    <c:out value="${product.detail}"/> <br>
-    <c:out value="${product.price}"/> <br>
-    <br> <br>
+    Name:                ${product.name} <br>
+    Product description: ${product.description} <br>
+    Product group:       ${product.group} <br>
+    Vendor:              ${product.vendor} <br>
+    Product detail:      ${product.detail} <br>
+    Price:               ${product.price} <br>
+    <br>
 </c:forEach>
 
 </body>
