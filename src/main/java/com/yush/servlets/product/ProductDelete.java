@@ -1,7 +1,5 @@
-package com.yush.product;
+package com.yush.servlets.product;
 
-import com.yush.dao.DAO;
-import com.yush.dao.ProductsDAO;
 import com.yush.dao.ProductsDAOImpl;
 import com.yush.entity.Product;
 import org.apache.log4j.Logger;

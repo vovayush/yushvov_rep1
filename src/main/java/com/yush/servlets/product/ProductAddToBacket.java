@@ -1,4 +1,4 @@
-package com.yush.product;
+package com.yush.servlets.product;
 
 import com.yush.dao.ProductsDAOImpl;
 import com.yush.entity.Product;

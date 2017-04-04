@@ -1,4 +1,4 @@
-package com.yush.product;
+package com.yush.servlets.product;
 
 import com.yush.dao.ProductsDAOImpl;
 import com.yush.entity.Product;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.yush.product.ProductParams.*;
+import static com.yush.servlets.product.ProductParams.*;
 
 
 @WebServlet(name = "ProductUpdate")

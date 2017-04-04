@@ -1,4 +1,4 @@
-package com.yush.users;
+package com.yush.servlets.users;
 
 import com.yush.dao.UsersDAOImpl;
 import com.yush.entity.User;
@@ -21,7 +21,7 @@ public class AuthCheck extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletContext();
         if ("on".equals(request.getParameter("isNewClient"))) {
-            RequestDispatcher rd = context.getRequestDispatcher("/view/NewUserForm.jsp");
+            RequestDispatcher rd = context.getRequestDispatcher("/view/user/NewUserForm.jsp");
             rd.forward(request, response);
         } else {
             try {

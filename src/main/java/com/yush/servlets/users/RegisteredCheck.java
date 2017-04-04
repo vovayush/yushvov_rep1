@@ -1,4 +1,4 @@
-package com.yush.users;
+package com.yush.servlets.users;
 
 import com.yush.dao.UsersDAOImpl;
 import com.yush.entity.User;
@@ -57,7 +57,7 @@ public class RegisteredCheck extends HttpServlet {
 
             usersDAO.insert(createdUser);
             request.getSession().setAttribute("badAuthentication", false);
-            RequestDispatcher rd = context.getRequestDispatcher("/view/viewAllUser.jsp");
+            RequestDispatcher rd = context.getRequestDispatcher("/view/user/viewAllUser.jsp");
             rd.forward(request, response);
 
         } else {

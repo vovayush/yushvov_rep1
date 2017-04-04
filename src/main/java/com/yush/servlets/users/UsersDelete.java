@@ -1,4 +1,4 @@
-package com.yush.users;
+package com.yush.servlets.users;
 
 import com.yush.dao.UsersDAOImpl;
 import com.yush.entity.User;

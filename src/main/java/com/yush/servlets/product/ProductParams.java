@@ -1,4 +1,4 @@
-package com.yush.product;
+package com.yush.servlets.product;
 
 
 public enum ProductParams {

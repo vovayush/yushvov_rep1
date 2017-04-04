@@ -27,6 +27,6 @@ cost=${cost} <br>
 </form>
 <a href="/view/viewShopingBacket.jsp">View shoping backet?</a><br>
 
-<a href="/view/productView.jsp">back to all products</a> <br>
+<a href="/view/product/productView.jsp">back to all products</a> <br>
 </body>
 </html>

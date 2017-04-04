@@ -36,7 +36,7 @@
 
     <!--<servlet>
         <servlet-name>Main</servlet-name>
-        <servlet-class>com.yush.product.ProductMain</servlet-class>
+        <servlet-class>com.yush.servlets.product.ProductMain</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,7 +46,7 @@
 
     <servlet>
         <servlet-name>AuthCheck</servlet-name>
-        <servlet-class>com.yush.users.AuthCheck</servlet-class>
+        <servlet-class>com.yush.servlets.users.AuthCheck</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -56,7 +56,7 @@
 
     <servlet>
         <servlet-name>RegCheck</servlet-name>
-        <servlet-class>com.yush.users.RegisteredCheck</servlet-class>
+        <servlet-class>com.yush.servlets.users.RegisteredCheck</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -74,7 +74,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>auth</servlet-name>
-        <jsp-file>/view/authentication.jsp</jsp-file>
+        <jsp-file>/view/authentication/authentication.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>auth</servlet-name>
@@ -90,7 +90,7 @@
     </servlet-mapping>-->
     <servlet>
         <servlet-name>ProductAdd</servlet-name>
-        <servlet-class>com.yush.product.ProductAddToBacket</servlet-class>
+        <servlet-class>com.yush.servlets.product.ProductAddToBacket</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductAdd</servlet-name>
@@ -99,7 +99,7 @@
 
     <servlet>
         <servlet-name>ClearBacket</servlet-name>
-        <servlet-class>com.yush.product.ClearProductBacket</servlet-class>
+        <servlet-class>com.yush.servlets.product.ClearProductBacket</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClearBacket</servlet-name>
@@ -107,7 +107,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CompletePurchase</servlet-name>
-        <servlet-class>com.yush.product.CompletePurchase</servlet-class>
+        <servlet-class>com.yush.servlets.product.CompletePurchase</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CompletePurchase</servlet-name>
@@ -115,7 +115,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>newProductAddView</servlet-name>
-        <jsp-file>/view/newProductAddForm.jsp</jsp-file>
+        <jsp-file>/view/product/newProductAddForm.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>newProductAddView</servlet-name>
@@ -123,7 +123,7 @@
     </servlet-mapping>
     <!--<servlet>
         <servlet-name>NewProductAdd</servlet-name>
-        <servlet-class>com.yush.product.ProductAdd</servlet-class>
+        <servlet-class>com.yush.servlets.product.ProductAdd</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewProductAdd</servlet-name>
@@ -131,39 +131,39 @@
     </servlet-mapping>-->
     <servlet>
         <servlet-name>ProductDeleteView</servlet-name>
-        <jsp-file>/view/productDeleteForm.jsp</jsp-file>
+        <jsp-file>/view/product/productDeleteForm.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductDeleteView</servlet-name>
         <url-pattern>/productdel</url-pattern>
     </servlet-mapping>
-    <servlet>
+    <!--<servlet>
         <servlet-name>ProductDelete</servlet-name>
-        <servlet-class>com.yush.product.ProductDelete</servlet-class>
+        <servlet-class>com.yush.servlets.product.ProductDelete</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductDelete</servlet-name>
         <url-pattern>/productdeleteserv</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>ProductUpdateView</servlet-name>
-        <jsp-file>/view/productUpdateForm.jsp</jsp-file>
+        <jsp-file>/view/product/productUpdateForm.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductUpdateView</servlet-name>
         <url-pattern>/productupdate</url-pattern>
     </servlet-mapping>
-    <servlet>
+    <!--<servlet>
         <servlet-name>ProductUpdate</servlet-name>
-        <servlet-class>com.yush.product.ProductUpdate</servlet-class>
+        <servlet-class>com.yush.servlets.product.ProductUpdate</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductUpdate</servlet-name>
         <url-pattern>/productupdateserv</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>UsersView</servlet-name>
-        <jsp-file>/view/allUsersView.jsp</jsp-file>
+        <jsp-file>/view/user/allUsersView.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsersView</servlet-name>
@@ -171,7 +171,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>UserDeleteView</servlet-name>
-        <jsp-file>/view/userDeleteForm.jsp</jsp-file>
+        <jsp-file>/view/user/userDeleteForm.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserDeleteView</servlet-name>
@@ -179,7 +179,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>UserDelete</servlet-name>
-        <servlet-class>com.yush.users.UsersDelete</servlet-class>
+        <servlet-class>com.yush.servlets.users.UsersDelete</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserDelete</servlet-name>

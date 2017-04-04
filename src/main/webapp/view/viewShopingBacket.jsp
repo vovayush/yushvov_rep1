@@ -35,7 +35,7 @@ quantity=${quantity} <br>
 %>
 <br>
 <br>
-<a href="/view/productView.jsp">back to products</a> <br>
+<a href="/view/product/productView.jsp">back to products</a> <br>
 <a href="/completepurchase">Compleate this purchase</a> <br>
 <a href="/clearbacket">Clear product backet</a> <br>
 totalCost = ${totalCost} <br>

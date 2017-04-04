@@ -10,5 +10,7 @@
 Name=${requestScope.createdProduct.name} <br>
 description=${requestScope.createdProduct.description} <br>
 price=${requestScope.createdProduct.price} <br>
+<a href="index.jsp">start page</a> <br>
+
 </body>
 </html>
