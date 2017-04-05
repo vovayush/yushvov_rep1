@@ -2,10 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Product deleted</title>
+    <title>Product updated</title>
 </head>
 <body>
-<p>Product was deleted Successfully</p>
+<p>Product was updated Successfully</p>
 
 Name=${requestScope.updatedProduct.name} <br>
 description=${requestScope.updatedProduct.description} <br>

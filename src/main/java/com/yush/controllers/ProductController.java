@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static com.yush.servlets.product.ProductParams.*;
-import static com.yush.servlets.product.ProductParams.QUANTITY;
 
 @Controller
 public class ProductController {
@@ -31,16 +30,16 @@ public class ProductController {
             errorModelAndView.addObject("urlMessage", "return and fill all field in form");
             return errorModelAndView;
         }
-        String name = request.getParameter("productName");
-        String description = request.getParameter("description");
+        String name = request.getParameter(PRODUCT_NAME.toString());
+        String description = request.getParameter(DESCRIPTION.toString());
         Double price;
         Integer quantity;
-        String productGroup = request.getParameter("productGroup");
-        String vendor = request.getParameter("vendor");
-        String detail = request.getParameter("detail");
+        String productGroup = request.getParameter(PRODUCT_GROUP.toString());
+        String vendor = request.getParameter(VENDOR.toString());
+        String detail = request.getParameter(DETAIL.toString());
         try {
-            price = Double.parseDouble(request.getParameter("price"));
-            quantity = Integer.parseInt(request.getParameter("Quantity"));
+            price = Double.parseDouble(request.getParameter(PRICE.toString()));
+            quantity = Integer.parseInt(request.getParameter(QUANTITY.toString()));
         } catch (NumberFormatException e) {
             LOG.debug("bad product parameter for price or quantity");
             errorModelAndView.addObject("errorMessage", "Price or quantity field does not correct");
@@ -61,13 +60,13 @@ public class ProductController {
     }
 
     private boolean isSomeFieldNotFilled(HttpServletRequest request) {
-        if (request.getParameter("productName").isEmpty() ||
-                request.getParameter("price").isEmpty() ||
-                request.getParameter("Quantity").isEmpty() ||
-                request.getParameter("vendor").isEmpty() ||
-                request.getParameter("description").isEmpty() ||
-                request.getParameter("detail").isEmpty() ||
-                request.getParameter("productGroup").isEmpty()) {
+        if (request.getParameter(PRODUCT_NAME.toString()).isEmpty() ||
+                request.getParameter(PRICE.toString()).isEmpty() ||
+                request.getParameter(QUANTITY.toString()).isEmpty() ||
+                request.getParameter(VENDOR.toString()).isEmpty() ||
+                request.getParameter(DESCRIPTION.toString()).isEmpty() ||
+                request.getParameter(DETAIL.toString()).isEmpty() ||
+                request.getParameter(PRODUCT_GROUP.toString()).isEmpty()) {
             return true;
         }
         return false;
@@ -76,8 +75,8 @@ public class ProductController {
     @RequestMapping("/productview")
     public ModelAndView productView() {
         LOG.debug("productView");
-        ModelAndView modelAndView = new ModelAndView("product/productView");
-        return modelAndView;
+        return new ModelAndView("product/productView");
+
     }
 
 

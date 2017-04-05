@@ -26,7 +26,7 @@
   description=${description} <br>
   cost=${cost} <br>
   /view/singleProductView.jsp?id=${key} <br>
-  <a href="/view/product/singleProductView.jspView.jsp?id=${key}">View more information</a> <br>
+  <a href="/view/product/singleProductView.jsp?id=${key}">View more information</a> <br>
   <br>
   <%
       for(PrComment prComment : product.getPrComments()) {
