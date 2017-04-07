@@ -7,21 +7,28 @@
 <body>
 <p><strong>You should fill in all field for registration</strong></p>
 <form action="regcheck" method="POST">
-  First Name: <input type="text" name="firstName"/><br>
+  <label for="firstName">First Name:&nbsp;</label>
+  <input type="text" name="firstName" id="firstName"/><br>
   <br>
-  Last Name: <input type="text" name="lastName"/><br>
+  <label for="lastName">Last Name:&nbsp;</label>
+  <input type="text" name="lastName" id="lastName"/><br>
   <br>
-  Login: <input type="text" name="login"/><br>
-  <br />
-  Password: <input type="text" name="password"/> <br>
-  <br />
-  Description: <input type="text" name="description"/> <br>
-  <br />
-  Email: <input type="text" name="email"/> <br>
-  <br />
-  Phone: <input type="text" name="phone"/> <br>
-  <br />
-  <br />
+  <label for="login">Login:&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="login" id="login"/><br>
+  <br/>
+  <label for="password">Password:&nbsp;</label>
+  <input type="text" name="password" id="password"/> <br>
+  <br/>
+  <label for="description">Description:&nbsp;</label>
+  <input type="text" name="description" id="description"/> <br>
+  <br/>
+  <label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="email" id="email"/> <br>
+  <br/>
+  <label for="phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="phone" id="phone"/> <br>
+  <br/>
+  <br/>
   <input type="checkbox" name="address" /> If you want to add new address you will have check address field
   and fill address parameter <br>
   <br />

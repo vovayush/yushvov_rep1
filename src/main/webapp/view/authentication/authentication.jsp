@@ -20,10 +20,11 @@
 
 %>
 <form action="authcheck" method="POST">
-  <input type="checkbox" name="isNewClient" /> If you are new client check this <br>
-  Login: <input type="text" name="login"/>
-  <br />
-  Password: <input type="text" name="password"/> <br>
+  <input type="checkbox" name="isNewClient" /> If you are new client check this <br><br>
+  <label for="login"> Login:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="login" id="login"/><br><br>
+  <label for="password">Password:&nbsp;</label>
+  <input type="text" name="password" id="password"/> <br><br>
   <input type="submit" value="Submit"/>
 </form>
 
