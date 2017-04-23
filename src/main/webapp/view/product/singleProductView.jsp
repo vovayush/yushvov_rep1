@@ -1,5 +1,3 @@
-<%@ page import="com.yush.entity.Product" %>
-<%@ page import="com.yush.dao.ProductsDAOImpl" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -7,26 +5,18 @@
     <title>Product View</title>
 </head>
 <body>
-<%
-String ids = request.getParameter("id");
-%>
-<% if (ids != null && !ids.equals("")) {
-    long id = Long.parseLong(ids);
-    ProductsDAOImpl productDao = new ProductsDAOImpl();
-    Product product = productDao.getByID(id);
-    request.setAttribute("name", product.getName());
-    request.setAttribute("description", product.getDescription());
-    request.setAttribute("cost", product.getPrice());
-  }
-%>
- Name=${name} <br>
-description=${description} <br>
-cost=${cost} <br>
-<form action="/productadd?id=<%= request.getParameter("id") %>" method="POST">
+Name:                ${requestScope.product.name} <br>
+Product description: ${requestScope.product.description} <br>
+Product group:       ${requestScope.product.group} <br>
+Vendor:              ${requestScope.product.vendor} <br>
+Product detail:      ${requestScope.product.detail} <br>
+Price:               ${requestScope.product.price} <br>
+
+<form action="/productadd?productId=${requestScope.product.ID}" method="POST">
    <input type="submit" value="buy"/>
 </form>
-<a href="/view/viewShopingBacket.jsp">View shoping backet?</a><br>
+<a href="/view/viewShoppingBasket.jsp">View shopping basket</a><br>
 
-<a href="/view/product/productView.jsp">back to all products</a> <br>
+<a href="/productview">back to all products</a> <br>
 </body>
 </html>

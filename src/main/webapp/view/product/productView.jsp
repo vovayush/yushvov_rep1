@@ -1,9 +1,4 @@
-<%@ page import="com.yush.entity.Product" %>
-<%@ page import="com.yush.dao.ProductsDAO" %>
-<%@ page import="com.yush.dao.ProductsDAOImpl" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.yush.entity.components.PrComment" %>
-<%@ page import="com.yush.entity.components.Characteristic" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,50 +7,24 @@
 <body>
 <p>Product map</p>
 <p>
-  <%
-    ProductsDAO productDao = new ProductsDAOImpl();
-    List<Product> productsList = productDao.getAll();
-    for(Product product : productsList) {
-      request.setAttribute("key",product.getID());
-      request.setAttribute("name", product.getName());
-      request.setAttribute("description", product.getDescription());
-      request.setAttribute("cost", product.getPrice());
-
-  %>
-   Name=${name} <br>
-  description=${description} <br>
-  cost=${cost} <br>
-  /view/singleProductView.jsp?id=${key} <br>
-  <a href="/view/product/singleProductView.jsp?id=${key}">View more information</a> <br>
-  <br>
-  <%
-      for(PrComment prComment : product.getPrComments()) {
-        request.setAttribute("prComment", prComment.toString());
-
-  %>
-
-  Comment = ${prComment} <br>
-
-  <%
-      }
-  %>
-  <br>
-  <%
-    for(Characteristic characteristic : product.getCharacteristics()) {
-      request.setAttribute("characteristic", characteristic.toString());
-
-  %>
-
-  Characteristic = ${characteristic} <br>
-
-  <%
-    }
-  %>
-  <br>
-  <br>
-  <%
-    }
-  %>
+  <c:forEach var="product" items="${productsList}">
+    Name:                ${product.name} <br>
+    Product description: ${product.description} <br>
+    Product group:       ${product.group} <br>
+    Vendor:              ${product.vendor} <br>
+    Product detail:      ${product.detail} <br>
+    Price:               ${product.price} <br>
+    <a href="/singleproductview?productId=${product.ID}">View more information</a> <br>
+    <br>
+    <c:forEach var="comment" items="${product.prComments}">
+      Comment = ${comment} <br>
+    </c:forEach>
+    <br>
+    <c:forEach var="characteristic" items="${product.characteristics}">
+      Characteristic = ${characteristic} <br>
+    </c:forEach>
+    <br>
+  </c:forEach>
 </p>
 </body>
 </html>

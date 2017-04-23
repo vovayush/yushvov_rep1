@@ -88,14 +88,14 @@
         <servlet-name>productView</servlet-name>
         <url-pattern>/productview</url-pattern>
     </servlet-mapping>-->
-    <servlet>
+    <!--<servlet>
         <servlet-name>ProductAdd</servlet-name>
         <servlet-class>com.yush.servlets.product.ProductAddToBacket</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductAdd</servlet-name>
         <url-pattern>/productadd</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>ClearBacket</servlet-name>

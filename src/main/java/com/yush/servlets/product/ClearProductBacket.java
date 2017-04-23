@@ -18,14 +18,14 @@ public class ClearProductBacket extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("shoppingBacket", new HashMap<Integer, Product>());
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/view/viewShopingBacket.jsp");
+        RequestDispatcher rd = context.getRequestDispatcher("/view/viewShoppingBasket.jsp");
         rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("shoppingBacket", new HashMap<Integer, Product>());
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/view/viewShopingBacket.jsp");
+        RequestDispatcher rd = context.getRequestDispatcher("/view/viewShoppingBasket.jsp");
         rd.forward(request, response);
     }
 }

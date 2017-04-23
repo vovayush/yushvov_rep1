@@ -136,6 +136,9 @@ public class Product extends SceletonEntity {
         productTo.setName(productFrom.getName());
         productTo.setDescription(productFrom.getDescription());
         productTo.setPrice(productFrom.getPrice());
+        productTo.setGroup(productFrom.getGroup());
+        productTo.setVendor(productFrom.getVendor());
+        productTo.setDetail(productFrom.getDetail());
     }
 
     @Override

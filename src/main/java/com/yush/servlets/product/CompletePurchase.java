@@ -23,7 +23,7 @@ public class CompletePurchase extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HashMap<Integer, Product> shoppingBacketMap = (HashMap) request.getSession().getAttribute("shoppingBacket");
+        HashMap<Integer, Product> shoppingBacketMap = (HashMap) request.getSession().getAttribute("shoppingBasket");
         if (shoppingBacketMap != null) {
             if (verifyQuantityProduct(shoppingBacketMap)) {
                 response.getWriter().println("verify true");

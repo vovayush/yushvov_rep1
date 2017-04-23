@@ -16,17 +16,18 @@ import java.util.HashMap;
 
 @WebServlet(name = "ProductAddToBacket")
 public class ProductAddToBacket extends HttpServlet {
-    HashMap<Integer, Product> shoppingBacket;
+    HashMap<Integer, Product> shoppingBasket;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idS = request.getParameter("id");
-        shoppingBacket = (HashMap) request.getSession().getAttribute("shoppingBacket");
-        if (shoppingBacket == null) {
-            shoppingBacket = new HashMap<Integer, Product>();
+
+        shoppingBasket = (HashMap) request.getSession().getAttribute("shoppingBasket");
+        if (shoppingBasket == null) {
+            shoppingBasket = new HashMap<Integer, Product>();
         }
         Integer id;
         Product product;
-        Product backetProduct = new Product();
+        Product basketProduct = new Product();
         ProductsDAOImpl productDao = new ProductsDAOImpl();
 
         if (idS != null && !idS.isEmpty()) {
@@ -35,20 +36,20 @@ public class ProductAddToBacket extends HttpServlet {
             int quantity = product.getQuantity();
             if (quantity > 0) {
 
-                if (shoppingBacket.get(id) == null) {
-                    Product.copyProduct(product, backetProduct);
-                    backetProduct.setQuantity(1);
-                    shoppingBacket.put(id, backetProduct);
+                if (shoppingBasket.get(id) == null) {
+                    Product.copyProduct(product, basketProduct);
+                    basketProduct.setQuantity(1);
+                    shoppingBasket.put(id, basketProduct);
                 } else {
-                    int backetQuantity = shoppingBacket.get(id).getQuantity();
-                    shoppingBacket.get(id).setQuantity(++backetQuantity);
+                    int basketQuantity = shoppingBasket.get(id).getQuantity();
+                    shoppingBasket.get(id).setQuantity(++basketQuantity);
                 }
             }
-            request.getSession().setAttribute("shoppingBacket", shoppingBacket);
+            request.getSession().setAttribute("shoppingBasket", shoppingBasket);
 
         }
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/view/singleProductView.jsp?id=" + idS);
+        RequestDispatcher rd = context.getRequestDispatcher("/singleproductview?productId=" + idS);
         rd.forward(request, response);
     }
 

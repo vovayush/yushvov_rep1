@@ -7,11 +7,14 @@ import com.yush.servlets.product.ProductParams;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.yush.servlets.product.ProductParams.*;
 
@@ -75,8 +78,64 @@ public class ProductController {
     @RequestMapping("/productview")
     public ModelAndView productView() {
         LOG.debug("productView");
-        return new ModelAndView("product/productView");
+        ProductsDAO productDao = new ProductsDAOImpl();
+        List<Product> productsList = productDao.getAll();
+        ModelAndView modelAndView = new ModelAndView("product/productView");
+        modelAndView.addObject("productsList", productsList);
+        return modelAndView;
+    }
 
+    @RequestMapping("/singleproductview")
+    public ModelAndView singleProductView(@RequestParam("productId") String productId) {
+        LOG.debug("singleProductView");
+        LOG.debug("productId=" + productId);
+        ProductsDAO productDao = new ProductsDAOImpl();
+        long productIdL = Long.parseLong(productId);
+        Product product = (Product)productDao.getByID(productIdL);
+        ModelAndView modelAndView = new ModelAndView("product/singleProductView");
+        modelAndView.addObject("product", product);
+        return modelAndView;
+    }
+    @RequestMapping("/productadd")
+    public ModelAndView productAddToBasket(@RequestParam("productId") String productId,
+                                           //@RequestParam(value="shoppingBasket", required = false) HashMap<Long, Product> shoppingBasket,
+                                           HttpServletRequest request) {
+        LOG.debug("productAddToBasket");
+        LOG.debug("productId=" + productId);
+        ModelAndView errorModelAndView = new ModelAndView("someErrorHappened");
+        if (productId == null || productId.isEmpty()) {
+            errorModelAndView.addObject("errorMessage", "Some error happened with buying");
+            errorModelAndView.addObject("backUrl", "/productview");
+            errorModelAndView.addObject("urlMessage", "return to all product");
+        }
+        HashMap<Long, Product> shoppingBasket = (HashMap<Long, Product>)request.getSession().getAttribute("shoppingBasket");
+        if (shoppingBasket == null) {
+            shoppingBasket = new HashMap<Long, Product>();
+        }
+
+        Product basketProduct = new Product();
+        ProductsDAO productDao = new ProductsDAOImpl();
+        Long productIdL = Long.parseLong(productId);
+        Product product = (Product)productDao.getByID(productIdL);
+        int quantity = product.getQuantity();
+        if (quantity <= 0) {
+            errorModelAndView.addObject("errorMessage", "You can't buy this product. The product has already ended");
+            errorModelAndView.addObject("backUrl", "/productview");
+            errorModelAndView.addObject("urlMessage", "return to all product");
+        }
+        if (shoppingBasket.get(productIdL) == null) {
+            Product.copyProduct(product, basketProduct);
+            basketProduct.setQuantity(1);
+            shoppingBasket.put(productIdL, basketProduct);
+        } else {
+            int basketQuantity = shoppingBasket.get(productIdL).getQuantity();
+            shoppingBasket.get(productIdL).setQuantity(++basketQuantity);
+        }
+        request.getSession().setAttribute("shoppingBasket", shoppingBasket);
+        ModelAndView modelAndView = new ModelAndView("product/productAddedToBasket");
+        modelAndView.addObject("shoppingBasket", shoppingBasket);
+        modelAndView.addObject("changedProduct", basketProduct);
+        return modelAndView;
     }
 
 
@@ -98,7 +157,6 @@ public class ProductController {
         ProductsDAOImpl productsDAO = new ProductsDAOImpl();
         String productID = request.getParameter(ProductParams.PRODUCT_ID.toString());
         LOG.debug("productID=" + productID);
-        //response.getWriter().println("productID" + productID);
         ModelAndView errorModelAndView = new ModelAndView("someErrorHappened");
         if (productID.isEmpty()) {
             errorModelAndView.addObject("errorMessage", "Some parameters field does not filled");
@@ -118,19 +176,16 @@ public class ProductController {
         }
         delProduct = productsDAO.getByID(id);
         LOG.debug("setId");
-        //response.getWriter().println("delProduct" + delProduct);
         if (delProduct == null) {
             errorModelAndView.addObject("errorMessage", "Product with this id: " + productID + " is absent");
             errorModelAndView.addObject("backUrl", "/productdel");
             errorModelAndView.addObject("urlMessage", "return and fill all field in form");
             return errorModelAndView;
-            //response.getWriter().println("Product with this id" + productID + "is absent");
         }
 
         productsDAO.delete(delProduct);
         LOG.debug("delete");
 
-        //response.getWriter().println("Delete was successful");
         ModelAndView modelAndView = new ModelAndView("product/productDeleted");
         modelAndView.addObject("deletedProduct", delProduct);
 
@@ -143,26 +198,15 @@ public class ProductController {
     public ModelAndView productUpdate(HttpServletRequest request, HttpServletResponse response) {
 
         LOG.debug("ProductUpdate Start");
-        /*for (ProductParams params : values()) {
-            LOG.debug(params + " " + request.getParameter(params.toString()));
-            //response.getWriter().println(params + " " + request.getParameter(params.toString()));
-        }*/
         Product filledProduct = getProductFromRequestContext(request);
-        //response.getWriter().println("filledProduct " + filledProduct);
 
         ProductsDAOImpl productsDAO = new ProductsDAOImpl();
-        /*if (productsDAO == null) {
-            LOG.debug("productsDAO==null");
-        }*/
         Integer productId = Integer.parseInt(request.getParameter(PRODUCT_ID.toString()));
         filledProduct.setId(productId);
-        //response.getWriter().println("productId " + productId);
 
         Product productFromDatabase = productsDAO.getByID(productId);
-        //response.getWriter().println("productFromDatabase " + productFromDatabase);
         Product productForUpdate = updateProductParameter(filledProduct, productFromDatabase);
 
-        // response.getWriter().println("productForUpdate " + productForUpdate);
         productsDAO.update(productForUpdate);
         ModelAndView modelAndView = new ModelAndView("product/productUpdated");
         modelAndView.addObject("updatedProduct", productForUpdate);
